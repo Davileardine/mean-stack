@@ -1,0 +1,16 @@
+<input type="text" [(ngModel)]="messageVarClass().username" class="form-control">
+<textarea [(ngModel)]="messageVarClass().content" class="form-control"></textarea>
+<article class="panel panel-default">
+  <div class="panel-body">
+    {{messageVarClass().content}}
+  </div>
+  <footer class="panel-footer">
+    <div class="author">
+      {{messageVarClass().username}}
+    </div>
+    <div class="config">
+      <a class="btn btn-primary" (click)="onEdit()">Editar</a>
+      <a class="btn btn-danger" (click)="onDelete()">Eliminar</a>
+    </div>
+  </footer>
+</article>

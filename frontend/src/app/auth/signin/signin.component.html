@@ -1,0 +1,32 @@
+<h1>SIGN IN</h1>
+<div class="col-md-8 col-md-offset-2">
+  <form [formGroup]="myFormIn" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" class="form-control" formControlName="email">
+    </div>
+    @if (myFormIn.get('emailTS')?.errors?.['required'] && myFormIn.get('emailTS')?.touched) {
+      <div class="alert alert-danger">Email is required</div>
+    }
+    @if (myFormIn.get('emailTS')?.errors?.['required'] && myFormIn.get('pattern')?.touched) {
+      <div class="alert alert-danger">Email is invalid</div>
+    }
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" class="form-control" formControlName="password">
+    </div>
+    @if (myFormIn.get('passwordTS')?.errors?.['required'] && myFormIn.get('passwordTS')?.touched) {
+      <div class="alert alert-danger">Password is required</div>
+    }
+
+    @if (myFormIn.get('passwordTS')?.errors?.['minlength'] && myFormIn.get('passwordTS')?.touched) {
+      <div class="alert alert-danger">Password is too short</div>
+    }
+
+    @if (myFormIn.get('passwordTS')?.errors?.['minusculoF'] && myFormIn.get('passwordTS')?.touched) {
+      <div class="alert alert-danger">Senha aceita apenas letras minusculas</div>
+    }
+    <button type="submit" class="btn btn-primary" [disabled]="!myFormIn.valid">Sign In</button>
+  </form>
+</div>
